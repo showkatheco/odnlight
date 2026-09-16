@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Original Divine Noni – Daily Wellness | Prof. Peter's Formula</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf8f1;
+    --bg-alt:#f2eadb;
+    --ink:#241f19;
+    --ink-soft:#5f5648;
+    --gold:#a9821f;
+    --gold-deep:#7d5f16;
+    --gold-bright:#c79a2b;
+    --green:#37473a;
+    --line:#e2d8bf;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.1;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  .label{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:13px; color:var(--gold-deep);
+    font-weight:600;
+  }
+  .label::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold); flex:none;}
+  .btn{
+    display:inline-block; padding:15px 30px; background:var(--ink); color:var(--bg);
+    border-radius:2px; font-size:14px; font-weight:600; letter-spacing:0.01em;
+    border:1px solid var(--ink); transition:background .25s ease, color .25s ease;
+    cursor:pointer; text-align:center;
+  }
+  .btn:hover{background:transparent; color:var(--ink);}
+  .btn-gold{background:var(--gold); border-color:var(--gold); color:#fffdf6;}
+  .btn-gold:hover{background:transparent; color:var(--gold-deep); border-color:var(--gold);}
+  .btn-outline{background:transparent; color:var(--ink); border:1px solid var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--bg);}
+  .btn-block{width:100%;}
+
+  /* Header (shared) */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,248,241,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+  .brand{font-family:'Fraunces', serif; font-size:20px; font-weight:600; display:flex; align-items:center; gap:10px;}
+  .brand .mark{
+    width:34px; height:34px; border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, var(--gold-bright), var(--gold-deep) 70%);
+    display:flex; align-items:center; justify-content:center; color:#fffdf6; font-size:15px; font-weight:700;
+  }
+  nav.links{display:flex; align-items:center; gap:34px; font-size:15px; font-weight:500;}
+  nav.links a{position:relative; padding:4px 0; color:var(--ink-soft);}
+  nav.links a:hover, nav.links a.active{color:var(--ink);}
+  .nav-cta{display:flex; align-items:center; gap:22px;}
+
+  .breadcrumb{
+    padding:20px 0 0;
+    font-size:13px; color:var(--ink-soft);
+  }
+  .breadcrumb a{color:var(--gold-deep); font-weight:600;}
+
+  /* Product hero */
+  .product-hero{padding:36px 0 80px;}
+  .product-hero .wrap{display:grid; grid-template-columns:0.95fr 1.05fr; gap:60px;}
+  .gallery-main{
+    border:1px solid var(--line); background:var(--card);
+    padding:20px; margin-bottom:12px;
+  }
+  .gallery-main img{width:100%; aspect-ratio:1/1; object-fit:contain;}
+  .gallery-thumbs{display:flex; gap:12px;}
+  .gallery-thumbs button{
+    all:unset; cursor:pointer;
+    width:76px; height:76px;
+    border:1px solid var(--line);
+    background:var(--card);
+    padding:6px;
+  }
+  .gallery-thumbs button.active{border-color:var(--gold);}
+  .gallery-thumbs img{width:100%; height:100%; object-fit:contain;}
+
+  .p-eyebrow{margin-bottom:14px;}
+  .p-title{font-size:clamp(30px,3.6vw,40px); margin-bottom:6px;}
+  .p-sub{font-size:14.5px; color:var(--ink-soft); margin-bottom:18px;}
+  .p-price{display:flex; align-items:baseline; gap:12px; margin-bottom:22px;}
+  .p-price .amt{font-family:'Fraunces',serif; font-size:30px; color:var(--gold-deep); font-weight:600;}
+  .p-price .range{font-size:13.5px; color:var(--ink-soft);}
+
+  .pack-select{margin-bottom:22px;}
+  .pack-select .lbl{font-size:13px; font-weight:600; margin-bottom:10px; display:block;}
+  .pack-options{display:flex; flex-wrap:wrap; gap:10px;}
+  .pack-options label{
+    border:1px solid var(--line); padding:12px 16px;
+    font-size:13.5px; cursor:pointer;
+    display:flex; flex-direction:column; gap:2px;
+    background:var(--card);
+    transition:border-color .2s ease;
+  }
+  .pack-options label b{font-size:14px;}
+  .pack-options label span{color:var(--ink-soft); font-size:12px;}
+  .pack-options input{accent-color:var(--gold);}
+  .pack-options input:checked + b{color:var(--gold-deep);}
+  .pack-options label:has(input:checked){border-color:var(--gold); background:var(--bg-alt);}
+
+  .qty-row{display:flex; align-items:center; gap:16px; margin-bottom:20px;}
+  .qty-box{display:flex; align-items:center; border:1px solid var(--line);}
+  .qty-box button{all:unset; width:38px; text-align:center; cursor:pointer; font-size:16px; padding:9px 0; color:var(--ink-soft);}
+  .qty-box span{width:40px; text-align:center; font-weight:600; font-size:14px;}
+
+  .cta-row{display:flex; gap:14px; margin-bottom:26px;}
+  .cta-row .btn{flex:1;}
+
+  .checklist{list-style:none; margin-bottom:26px;}
+  .checklist li{
+    display:flex; gap:10px; padding:9px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14px; color:var(--ink-soft);
+  }
+  .checklist li:last-child{border-bottom:none;}
+  .checklist li::before{
+    content:"✓"; color:var(--gold-deep); font-weight:700; flex:none;
+  }
+
+  .ship-note{
+    display:flex; gap:14px; padding:16px 18px;
+    background:var(--bg-alt); border-left:3px solid var(--gold);
+    font-size:13.5px; color:var(--ink-soft);
+  }
+  .ship-note b{color:var(--ink); display:block; font-size:14px; margin-bottom:2px;}
+
+  section{padding:80px 0;}
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .section-head h2{font-size:clamp(28px,3.2vw,38px); margin-top:14px;}
+  .section-head h2 em{font-style:italic; color:var(--gold-deep); font-weight:500;}
+  .section-head p{color:var(--ink-soft); margin-top:12px; font-size:15.5px; max-width:56ch;}
+
+  /* Description */
+  .desc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .desc-card h3{font-size:18px; font-weight:600; margin-bottom:10px;}
+  .desc-card p{font-size:14.5px; color:var(--ink-soft);}
+
+  /* Trust band */
+  .trust{background:var(--ink); color:#f6efdc;}
+  .trust .section-head{max-width:640px;}
+  .trust .label{color:var(--gold-bright);}
+  .trust .label::before{background:var(--gold-bright);}
+  .trust .section-head h2, .trust .section-head p{color:#f6efdc;}
+  .trust .section-head p{color:#cbbf9e;}
+  .trust-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.12);}
+  .trust-card{background:#2c261e; padding:28px 24px;}
+  .trust-card .n{font-family:'Fraunces',serif; color:var(--gold-bright); font-size:15px; font-weight:600; margin-bottom:12px; display:block;}
+  .trust-card h3{font-size:16px; margin-bottom:8px; color:#f6efdc;}
+  .trust-card p{font-size:13.5px; color:#b9ad8d;}
+
+  /* compounds (shared style) */
+  .compound-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .compound{padding:26px 24px; background:var(--card); border:1px solid var(--line); border-top:3px solid var(--gold);}
+  .compound h3{font-size:16.5px; font-weight:600; margin-bottom:8px;}
+  .compound p{font-size:13.5px; color:var(--ink-soft);}
+
+  /* Dosage */
+  .dosage{background:var(--bg-alt);}
+  .phase-row{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-bottom:30px;}
+  .phase{background:var(--card); border:1px solid var(--line); padding:30px 26px; text-align:center;}
+  .phase .roman{font-family:'Fraunces',serif; font-size:15px; color:var(--gold); font-weight:600; display:block; margin-bottom:10px;}
+  .phase .ml{font-family:'Fraunces',serif; font-size:38px; color:var(--ink); font-weight:500;}
+  .phase .when{font-size:13px; color:var(--ink-soft); margin:10px 0 16px;}
+  .phase .times{display:flex; justify-content:center; gap:18px; font-size:12.5px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:14px;}
+  .phase .times b{color:var(--ink); display:block; font-size:13.5px;}
+  .dosage-foot{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px; border-top:1px solid var(--line); padding-top:26px;}
+  .dosage-foot p{font-size:14px; color:var(--ink-soft);}
+
+  .disclaimer{font-size:12.5px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:20px; margin-top:10px; max-width:800px;}
+
+  /* Reviews */
+  .review-summary{display:flex; align-items:center; gap:18px; margin-bottom:36px;}
+  .review-summary .score{font-family:'Fraunces',serif; font-size:44px; color:var(--gold-deep); font-weight:600;}
+  .review-summary .stars{color:var(--gold); font-size:16px; letter-spacing:2px;}
+  .review-summary .count{font-size:13.5px; color:var(--ink-soft);}
+  .review-list{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .review{background:var(--card); border:1px solid var(--line); padding:24px 26px;}
+  .review .stars{color:var(--gold); font-size:13px; margin-bottom:10px; letter-spacing:2px;}
+  .review p{font-size:14px; color:var(--ink-soft); margin-bottom:14px;}
+  .review .who{font-size:13px; font-weight:600; display:flex; align-items:center; gap:8px;}
+  .review .who span{font-weight:400; color:var(--ink-soft); font-size:12px;}
+
+  footer{background:var(--ink); color:#cbbf9e; padding:72px 0 30px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 0.8fr 0.8fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.12);}
+  .foot-grid h4{font-size:13px; color:#f6efdc; font-weight:600; margin-bottom:16px;}
+  .foot-brand{font-family:'Fraunces',serif; color:#f6efdc; font-size:20px; margin-bottom:14px;}
+  .foot-grid p{font-size:14px; line-height:1.7;}
+  .foot-grid ul{list-style:none;}
+  .foot-grid li{margin-bottom:10px; font-size:14px;}
+  .foot-grid a:hover{color:var(--gold-bright);}
+  .foot-social{display:flex; gap:14px; margin-top:18px;}
+  .foot-social a{width:34px; height:34px; border-radius:50%; border:1px solid rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; font-size:13px;}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; font-size:13px; flex-wrap:wrap; gap:12px; color:#93876a;}
+
+  @media (max-width:900px){
+    .product-hero{grid-template-columns:1fr;}
+    .desc-grid{grid-template-columns:1fr;}
+    .trust-grid{grid-template-columns:1fr 1fr;}
+    .compound-grid{grid-template-columns:1fr 1fr;}
+    .phase-row{grid-template-columns:1fr;}
+    .review-list{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    nav.links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="divine-noni-light.html"><span class="mark">DN</span>Original Divine Noni</a>
+    <nav class="links">
+      <a href="divine-noni-light.html#store" class="active">Store</a>
+      <a href="divine-noni-light.html#about">About</a>
+      <a href="divine-noni-light.html#blog">Blog</a>
+      <a href="divine-noni-light.html#contact">Contact</a>
+      <a href="divine-noni-light.html#careers">Careers</a>
+    </nav>
+    <div class="nav-cta">
+      <span style="font-size:14px; color:var(--ink-soft);">₹0 · Cart</span>
+      <a href="#orderbutton" class="btn btn-gold" style="padding:11px 22px;">Order Now</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap breadcrumb">
+  <a href="divine-noni-light.html">Home</a> · <a href="divine-noni-light.html#store">Store</a> · Original Divine Noni
+</div>
+
+<section class="product-hero">
+  <div class="wrap">
+    <div>
+      <div class="gallery-main">
+        <img id="mainImg" src="https://originaldivinenoni.com/wp-content/uploads/2026/04/Divine-Noni-web-images-blog-image.webp" alt="Original Divine Noni – Daily Wellness">
+      </div>
+      <div class="gallery-thumbs">
+        <button class="active" onclick="swapImg(this,'https://originaldivinenoni.com/wp-content/uploads/2026/04/Divine-Noni-web-images-blog-image.webp')">
+          <img src="https://originaldivinenoni.com/wp-content/uploads/2026/04/Divine-Noni-web-images-blog-image-600x600.webp" alt="Thumbnail 1">
+        </button>
+        <button onclick="swapImg(this,'https://originaldivinenoni.com/wp-content/uploads/2026/04/ORIGINA-Divine-Noni-web-images-blog-image-1.webp')">
+          <img src="https://originaldivinenoni.com/wp-content/uploads/2026/04/ORIGINA-Divine-Noni-web-images-blog-image-1-600x600.webp" alt="Thumbnail 2">
+        </button>
+        <button onclick="swapImg(this,'https://originaldivinenoni.com/wp-content/uploads/2026/07/Divine-Noni-web-images-blog-image.png')">
+          <img src="https://originaldivinenoni.com/wp-content/uploads/2026/07/Divine-Noni-web-images-blog-image-600x600.png" alt="Thumbnail 3">
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <span class="label p-eyebrow">Born Here · Made Here</span>
+      <h1 class="p-title">Original Divine Noni — Daily Wellness</h1>
+      <p class="p-sub">Real Noni fruit formula for antioxidant protection, cellular wellness and everyday vitality.</p>
+
+      <div class="p-price">
+        <span class="amt">₹720</span>
+        <span class="range">– ₹4,320 depending on pack · inclusive of taxes</span>
+      </div>
+
+      <div class="pack-select">
+        <span class="lbl">Select pack</span>
+        <div class="pack-options">
+          <label><input type="radio" name="pack" checked> <b>400 mL</b><span>Starter — 16 days supply</span></label>
+          <label><input type="radio" name="pack"> <b>800 mL</b><span>A month's supply</span></label>
+          <label><input type="radio" name="pack"> <b>800 mL × 3</b><span>Three months' supply</span></label>
+        </div>
+      </div>
+
+      <div class="qty-row">
+        <span class="lbl" style="font-size:13px; font-weight:600;">Quantity</span>
+        <div class="qty-box">
+          <button onclick="stepQty(-1)">−</button>
+          <span id="qtyVal">1</span>
+          <button onclick="stepQty(1)">+</button>
+        </div>
+      </div>
+
+      <div class="cta-row" id="orderbutton">
+        <button class="btn btn-outline">Add to Cart</button>
+        <button class="btn btn-gold">Buy Now</button>
+      </div>
+
+      <ul class="checklist">
+        <li>Made from real Noni fruit — real fruit, real benefits</li>
+        <li>Supports a healthy metabolism as part of a balanced diet and active lifestyle</li>
+        <li>Helps maintain blood glucose levels already within the normal range</li>
+        <li>Powerful antioxidant support to help fight free radicals and reduce oxidative stress</li>
+        <li>Helps boost immunity naturally — rich in bioactive compounds</li>
+        <li>Supports joint and muscle comfort with a healthy inflammatory response</li>
+        <li>Sustains energy and vitality, naturally reducing tiredness</li>
+        <li>Provides gut and digestive health, promoting a healthy microbiome</li>
+      </ul>
+
+      <div class="ship-note">
+        <div>
+          <b>Ships same day</b>
+          Delivery in 5–7 days, based on your location.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Description</span>
+      <h2>Discover the Power of <em>Original Divine Noni</em></h2>
+      <p>A naturally formulated health drink designed to support your overall wellbeing — enriched with the goodness of Noni fruit for a holistic approach to daily energy and vigor.</p>
+    </div>
+    <div class="desc-grid">
+      <div class="desc-card">
+        <h3>Promotes Healthy Living</h3>
+        <p>Packed with antioxidants, vitamins, and essential nutrients, making it an ideal addition to your wellness routine — supporting immunity, digestion, and vitality.</p>
+      </div>
+      <div class="desc-card">
+        <h3>Why Original Divine Noni?</h3>
+        <p>Sourced from high-quality ingredients and meticulously processed to ensure purity and effectiveness with every bottle.</p>
+      </div>
+      <div class="desc-card">
+        <h3>Built for Daily Use</h3>
+        <p>Whether you're starting your health journey or enhancing your current routine, it's a reliable, natural addition to daily life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Trusted by over 1,000,000 families across India since 2001</span>
+      <h2>Prof. Peter's <em>Original Noni Formula</em></h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="n">01</span>
+        <h3>150+ Nutrients</h3>
+        <p>Vitamins, minerals, rare iridoids and antioxidants in every drop — the most complete Noni formula available.</p>
+      </div>
+      <div class="trust-card">
+        <span class="n">02</span>
+        <h3>Immune Support</h3>
+        <p>Scopoletin and Vitamin C reinforce your body's natural defense systems against daily stressors.</p>
+      </div>
+      <div class="trust-card">
+        <span class="n">03</span>
+        <h3>Cellular Detox</h3>
+        <p>Prof. Peter's original formula preserves every vital nutrient for deep cellular regeneration.</p>
+      </div>
+      <div class="trust-card">
+        <span class="n">04</span>
+        <h3>Trusted Formula</h3>
+        <p>A proprietary blend refined over decades — now trusted by millions across India and the world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">FSSAI Licensed · Rare Iridoids</span>
+      <h2>What It Has and <em>How It Benefits</em></h2>
+      <p>Bioactive compounds that support joint comfort and everyday vitality.</p>
+    </div>
+    <div class="compound-grid">
+      <div class="compound"><h3>Proxeronine</h3><p>The precursor to xeronine — unlocks cells' ability to repair and optimise protein function.</p></div>
+      <div class="compound"><h3>Scopoletin</h3><p>Powerful anti-inflammatory and vasodilator, studied for blood pressure modulation and immune regulation.</p></div>
+      <div class="compound"><h3>Damnacanthal</h3><p>One of Noni's most studied compounds, with research interest for immune surveillance.</p></div>
+      <div class="compound"><h3>Polysaccharides</h3><p>Complex immune-training sugars that activate and sustain the body's natural defence network.</p></div>
+      <div class="compound"><h3>Anthraquinones</h3><p>Natural compounds with antibacterial and adaptogenic properties, supporting gut balance.</p></div>
+      <div class="compound"><h3>Rare Iridoids</h3><p>The hallmark bioactives of Morinda citrifolia, studied for cellular communication and metabolic health.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dosage">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Dosage Guide</span>
+      <h2>Your Journey to Wellness, <em>Step by Step</em></h2>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase">
+        <span class="roman">Phase I — Days 1–3</span>
+        <div class="ml">5 mL</div>
+        <div class="when">Ease into it</div>
+        <div class="times"><div><b>5 mL</b>Morning</div><div><b>5 mL</b>Evening</div></div>
+      </div>
+      <div class="phase">
+        <span class="roman">Phase II — Days 4–6</span>
+        <div class="ml">10 mL</div>
+        <div class="when">Build up</div>
+        <div class="times"><div><b>10 mL</b>Morning</div><div><b>10 mL</b>Evening</div></div>
+      </div>
+      <div class="phase">
+        <span class="roman">Phase III — Day 7 onward</span>
+        <div class="ml">15 mL</div>
+        <div class="when">Regular use</div>
+        <div class="times"><div><b>15 mL</b>Morning</div><div><b>15 mL</b>Evening</div></div>
+      </div>
+    </div>
+
+    <div class="dosage-foot">
+      <p>Take 30 minutes before food, morning and evening.</p>
+      <a href="#orderbutton" class="btn btn-gold">Order Now: Select a Pack</a>
+    </div>
+
+    <p class="disclaimer">Medical disclaimer: these statements have not been evaluated by the Food Safety and Standards Authority of India (FSSAI). This product is not intended to diagnose, treat, cure, or prevent any disease. Consult a healthcare professional before starting any new dietary supplement.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:30px;">
+      <span class="label">Reviews</span>
+      <h2>What Customers <em>Are Saying</em></h2>
+    </div>
+
+    <div class="review-summary">
+      <span class="score">4.9</span>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="count">Based on 7 verified reviews</div>
+      </div>
+    </div>
+
+    <div class="review-list">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>I tried this for my mom, along with her doctor's advice and medical treatment for diabetes — I'm pretty sure the Noni extract helps her greatly. Absolutely useful in diabetes management.</p>
+        <div class="who">Showkath Jamal <span>Verified owner · May 27, 2026</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>Divine Noni Juice has truly helped me manage my weight in a natural way. I feel healthier, more energetic, and grateful for this product. Highly recommend it!</p>
+        <div class="who">Birundha V <span>May 30, 2026</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★☆</div>
+        <p>Excellent product! Original Divine Noni Juice has become part of my healthy lifestyle. The quality, freshness, and authentic taste make it stand out.</p>
+        <div class="who">Gopi <span>June 30, 2026</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>I have been using Divine Noni consistently, and it has made a positive difference in my daily life. I feel more energetic, refreshed, and active throughout the day.</p>
+        <div class="who">Sai Chandru <span>June 30, 2026</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>I have had a positive experience with Original Divine Noni. Well-packaged, easy to use, and conveniently part of a daily wellness routine.</p>
+        <div class="who">Kumarswamy S.H <span>July 10, 2026</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>A great product that supports overall health and wellness as part of a balanced diet. I have found this product to be amazing and beneficial.</p>
+        <div class="who">Ezhumalai <span>July 11, 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Original Divine Noni™</div>
+        <p>India's trusted Noni supplement, crafted from the original formula developed by the late Prof. Peter since 2001. 25 years of wellness across 26 states.</p>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/originaldivinenoni/" aria-label="Instagram">IG</a>
+          <a href="https://www.facebook.com/theoriginaldivinenoni/" aria-label="Facebook">FB</a>
+          <a href="https://www.youtube.com/@OriginalDivineNoni" aria-label="YouTube">YT</a>
+          <a href="https://www.linkedin.com/company/original-divine-noni" aria-label="LinkedIn">IN</a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="divine-noni-light.html">Home</a></li>
+          <li><a href="divine-noni-light.html#store">Store</a></li>
+          <li><a href="divine-noni-light.html#about">About</a></li>
+          <li><a href="divine-noni-light.html#contact">Contact</a></li>
+          <li><a href="#">Partner Portal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return &amp; Refund Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+919790044955">+91 97900 44955</a></li>
+          <li><a href="tel:+919790044909">+91 97900 44909</a></li>
+          <li><a href="mailto:support@originaldivinenoni.com">support@originaldivinenoni.com</a></li>
+          <li>7/210, VGP Pushpa Nagar,<br>Medavakkam, Chennai 600100</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Prof Peter's Original Divine Noni. All rights reserved.</span>
+      <span>FSSAI Certified · Made in India</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function swapImg(btn, src){
+    document.getElementById('mainImg').src = src;
+    document.querySelectorAll('.gallery-thumbs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  let qty = 1;
+  function stepQty(delta){
+    qty = Math.max(1, qty + delta);
+    document.getElementById('qtyVal').textContent = qty;
+  }
+</script>
+
+</body>
+</html>
